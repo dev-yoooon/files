@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI Guides</title>
+    <link rel="stylesheet" href="../assets/css/ui-common.css">
+    <style>
+body{font-size: 1.4rem;}
+.guides{display: flex; min-height: 100vh; background-color: #f5f8fb;}
+.guides-menu{width: 220px; min-height: 100vh; position: fixed; top: 0; left: 0; background-color: #fff; box-sizing: border-box; padding: 25px;}
+.guides-menu ul{margin-top: 65px;}
+.guides-menu li{font-size: 1.8rem; margin-bottom: 10px;}
+.guides-menu li a{color: #222;}
+.guides-menu li:last-child{margin-top: 35px;}
+.guides-menu li:last-child a{text-decoration: underline; color: #02bba1;}
+.guides-contents{width: 100vw; box-sizing: border-box; padding: 0 25px 0 275px;}
+.guides-contents section{width: 940px; padding-top: 105px;}
+.guides-contents section > section{padding-top: 0; counter-reset: title;}
+.guides-contents h2{font-size: 2.8rem; margin-bottom: 1.2rem;}
+.guides-contents h3{font-size: 2.4rem; margin-bottom: 1.2rem;}
+.guides-contents h4{font-size: 2.0rem;}
+.guides-contents h4::before{counter-increment: title; content: counter(title) ". ";}
+.guides-contents h5{font-size: 1.8rem;}
+textarea{display: block; background-color: transparent; border-width: 0; overflow-y: hidden; width:100%; height: auto;}
+ol{counter-reset: items; margin-bottom: 2rem;}
+ol li{margin-left: 1.6rem; margin-top: .3rem;}
+ol li::before{counter-increment: items; content: counter(items) ". "; margin-left: -1.6rem;}
+a.u, u{text-decoration: underline;}
+    </style>
+</head>
+<body>
+<div class="guides">
+    <div class="guides-menu">
+        <h1><img src="" alt=""></h1>
+        <ul>
+            <li><a href="#guide">문서 가이드</a></li>
+
+            <!-- UI Style -->
+            <li><a href="#title">타이틀/텍스트</a></li>
+            <li><a href="#tabs">탭메뉴</a></li>
+            <li><a href="#button">버튼</a></li>
+            <li><a href="#component">입력폼</a></li>
+            <li><a href="#table">테이블/게시판</a></li>
+            
+            <!-- Common Templates -->
+            <li><a href="template.html" target="_blank">본문 탬플릿</a></li>
+            <li><a href="popup.html" target="_blank">일반팝업</a></li>
+            <li><a href="alert.html" target="_blank">알럿</a></li>
+    
+            <li><a href="/html/index.html" target="top">HTML LIST 바로가기</a></li>
+        </ul>
+    </div>
+    
+    <div class="guides-contents">
+        <section id="guide">
+            <h2 class="guides-tit">문서 가이드</h2>
+
+            <section>
+                <h3>네이밍</h3>
+
+                <h4>기본규칙</h4>
+                <ol>
+                    <li>
+                        이름은 영문 소문자, 숫자, 언더스코어(_) 또는 대시(-)로만 작성하고, 영문 대문자/숫자로 시작하지 않는다.<br>
+                        - 클래스명 : 대시(-)로 구분<br>
+                        - 파일명 : 언더스코어(_)로 구분<br>
+                    </li>
+                    <li>단어의 조합은 최대 3단계 이상을 넘지 않도록 한다.</li>
+                    <li>숫자 앞에는 언더스코어를 붙이지 않으며, 숫자가 없으면 '1'이라는 숫자가 생략된 것으로 간주한다. 단, 숫자 정보이면 '1'을 표기한다.</li>
+                    <li>2개 이상의 단어를 언더스코어없이 조합하고자 할 때 카멜표기법을 사용한다.</li>
+                    <li>이미지명의 숫자 조합은 이미지 확장자와 관계없이 순차적으로 적용한다.</li>
+                </ol>
+                
+                <h4>ID 및 CLASS 네이밍 규칙</h4>
+                <ol>
+                    <li>요소의 ID속성는 문서에 한번만 사용한다.</li>
+                    <li>레이아웃을 제외한 기타 요소에는 ID속성을 지정하지 않는다.</li>
+                    <li>레이아웃 ID는 추가 단어의 조합을 하지 않고 Class명으로 구분한다.</li>
+                </ol>
+
+                <p><a href="ID 및 Class 약속어.docx" class="u">id 및 class 약속어는 별첨</a></p>
+                
+                <br>
+                <br>
+                <br>
+            </section>
+
+            <section>
+                <h3>HTML 작성 규칙</h3>
+                <h4>기본규칙</h4>
+                <ol>
+                    <li>모든 HTML 파일의 시작 부분에 문서의 DOCTYPE타입을 선언해야 하며, 기본 DTD는 <strong>html5</strong>을 사용한다.</li>
+                    <li>HTML의 모든 요소는 DOCTYPE 명세의 표준에 맞게 작성하며, W3C Validation검사를 통과해야 한다.</li>
+                    <li>모든 요소와 속성는 소문자로 작성하며 속성값은 큰따옴표("")로 묶는다.</li>
+                </ol>
+                
+                <h5>들여쓰기</h5>
+                <ol>
+                    <li>
+                        마크업의 중첩이 깊어질 때마다 자식 요소는 1탭 들여쓰고, 1탭의 크기는 공백 4칸으로 설정한다.<br>
+                        단, 다음과 같은 경우에는 들여쓰지 않는다.<br>
+                        - &lt;html&gt;의 자식 요소: &lt;head&gt;, &lt;body&gt;<br>
+                        - &lt;body&gt; 최상위 컨테이너 요소 : &lt;div id=”wrap”&gt;<br>
+                        - &lt;table&gt;의 자식 요소인 &lt;caption&gt;,&lt;colgroup&gt;<br>
+                        - &lt;fieldset&gt;의 자식 요소인 &lt;legend&gt;<br>
+                    
+                    </li>
+                    <li>
+                        자식요소 간 동일한 레벨의 요소는 들여쓰기를 하지 않는다.
+                    </li>
+                </ol>
+
+                <h5>주석</h5>
+                <ol>
+                    <li>
+                        HTML 주석의 시작과 종료 표기 방식<br>
+                        - 시작주석 : &lt;!-- 주석내용 --&gt;<br>
+                        - 종료주석 : &lt;!-- // 주석내용 --&gt;<br>
+                    </li>
+                    <li>최상위 컨테이너(id="wrap")을 제외한 레이아웃 요소와 독립된 콘텐츠 영역의 시작과 끝에는 주석을 표기하며, 시작/종료 주석의 내용은 동일하게 작성한다.</li>
+                </ol>
+                <textarea style="height:15rem">
+※ 주석표기 예)
+<!-- contents -->
+<div id="contents">
+<!-- 게시판 리스트 -->
+<div class=”board-list"> ... </div>
+<!-- // 게시판 리스트 -->
+</div>
+<!-- // contents -->                        
+                </textarea>
+                <br>
+                <br>
+                
+                <h4>요소별 규칙</h4>
+
+                <h5>&lt;title&gt;</h5>
+                <ol>
+                    <li>
+                        현재 페이지를 기준으로 메뉴 깊이의 역순으로 작성한다.<br>
+                        브라우저 타이틀 제공 순서 : &lt;title&gt;<strong>현재페이지 타이틀</strong> &gt; 2Depth Title &gt; 1Depth Title &gt;사이트명&lt;/title&gt;<br>
+                    </li>
+                    <li>혹은, 현재 페이지 &#124; 사이트명</li>
+                </ol>
+
+                <h5>스킵 네비게이션</h5>
+                <ol>
+                    <li>
+                        최상위 컨테이너 첫번째 자식요소로 선언하여, 키보드 접근시 '건너뛰기 링크'를 제공하도록 한다.
+                        <textarea style="height:13rem">
+소스 예
+<div id=”wrap”>
+<span id=”skipNav”>
+    <a href=”#”>본문바로가기</a>
+    <a href=”#”>대메뉴바로가기</a>
+</span>
+</div>
+                        </textarea>
+                    </li>
+                </ol>
+
+                <h5>레이아웃 요소</h5>
+                <ol>
+                    <li>
+                        화면 레이아웃을 나눌 때, 의미가 부여된 컨테이너 태그를 사용한다.<br>
+                        - &lt;header&gt; : 배너, 머리말<br>
+                        - &lt;nav&gt; : 내비게이션<br>
+                        - &lt;main&gt; : 본문<br>
+                        - &lt;footer&gt; : 바닥글, 콘텐츠 정보<br>
+                        - &lt;article&gt; : 독립된 영역<br>
+                        - &lt;section&gt; : 연관된 구문, 단락<br>
+                    </li>
+                    <li>구역을 나누는 구획 요소(Sectioning Elements)에는 제목 요소가 제공되어야 한다.</li>
+                </ol>
+
+                <h5>form</h5>
+                <ol>
+                    <li>서로 관련있는 폼 컨트롤은 그루핑하여 &lt;fieldset&gt; 요소로 묶어준다. 그루핑 적용시, &lt;legend&gt;요소를 통해 필드셋 그룹에 대한 간단한 타이틀을 부여한다.</li>
+                    <li>*&lt;fieldset&gt; 요소는 중첩사용을 지양한다.</li>
+                    <li>&lt;label&gt;은 폼 컨트롤과 명시적으로 1:1 대응해야 한다.</li>
+                    <!-- <li>&lt;label&gt; 컨트롤을 사용하지 않을 경우, value와 title속성을 사용하여 컨트롤의 역할에 대한 설명을 추가해 준다.</li> -->
+                </ol>
+
+                <h5>table</h5>
+                <ol>
+                    <li>
+                        Table 첫 행에 &lt;caption&gt;요소를 사용하여 테이블의 간단한 정보를 추가해 준다.
+                        <textarea style="height:7rem">
+<caption>
+    <detail>타이틀</detail>
+    <summary>테이블 설명 내용</summary>
+</caption>
+                        </textarea>
+                    </li>
+                    <li>&lt;th&gt;요소에는 scope속성을 선언하여 지정된 셀의 머리글 정보를 행과 열의 데이터값과 매칭시켜 준다. 단, abbr속성의 사용은 선택사항이다.</li>
+                </ol>
+
+                <br>
+                <br>
+            </section>
+
+            <section>
+                <h3>CSS 작성 규칙</h3>
+
+                <h4>기본규칙</h4>
+                <ol>
+                    <!-- <li>모든 속성은 영문 소문자로만 작성하며, W3C Validation검사를 통과해야 한다.</li> -->
+                    <li>CSS코드 작성시 들여쓰기는 하지 않는다.(단, 미디어쿼리 적용시 구간별 추가 스타일 속성은 1탭 들여쓰기로 구분한다.)</li>
+                    <li>
+                        따옴표 사용 범위<br>
+                        - 큰 따옴표("") : @charset선언<br>
+                        - 작은 따옴표('') : 공백이 포함된 폰트명, 한글 폰트명, 데이터 타입, format, filter속성의 파라미터값<br>
+                        - <u>url데이터 타입, html속성에는 작은 따옴표를 사용하지 않는다.</u><br>
+                    </li>
+                    <li>스타일의 공통 속성 선택자 "*"의 사용을 지양한다.</li>
+                    <li>
+                        OS, Device, Browser 별 클래스네임<br>
+                        - OS : mac / windows<br>
+                        - Device : pc(desktop) / tablet / mobile<br>
+                        - Browser : ie(edge) / chrome / firefox / safari / opera<br>
+                    </li>
+                </ol>
+
+                <h4>속성</h4>
+                <ol>
+                    <li>font약식 속성은 사용하지 않는다.</li>
+                    <li>background 약식 순서 : color image position / size repeat attachment origin clip</li>
+                    <li>line-height의 <body>요소 기본값에는 단위를 붙이지 않는다.</li>
+                    <li>속성값이 0일 경우 단위를 표시하지 않는다.</li>
+                    <li>문자로 표현한 위치값은 숫자로 변환한다.</li>
+                </ol>
+
+                <h4>단위 및 기본설정(root) 정의</h4>
+                <ol>
+                    <li>
+                        root 선언부의 폰트 기본단위는 rem으로 시작한다. (PC 작업기준)<br>
+                        - font-size 기본값 = 0.625rem(10px)<br>
+                        이하, 모든 스타일 속성값의 단위는 rem으로 치환하여 정의한다.<br>
+                    </li>
+                </ol>
+
+                <h4>미디어쿼리</h4>
+                <ol>
+                    <li>
+                        반응형 구간별 기준<br>
+                        - PC(Desktop) : 저해상도 1024 ~ 1440 / 고해상도 1441 ~ 1920<br>
+                        - Tablet : 768 ~ 1023<br>
+                        - Mobile : 320 ~ 767<br>
+                    </li>
+                </ol>
+            </section>
+
+            <br>
+            <br>
+            <br>
+        </section>
+    </div>
+</div>   
+    
+</body>
+</html>

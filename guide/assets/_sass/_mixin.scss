@@ -1,0 +1,152 @@
+@charset "UTF-8";
+
+$base-text-color: #222;
+$font-name: 'NanumSquare', sans-serif;
+
+////////////////////////////////////////////////////////////////
+
+// Font Justify
+@mixin font($type: null, $font-size: null, $font-weight: null, $line-height: null) {
+    font-family: $type;
+    font-size: $font-size;
+    font-weight: $font-weight;
+    line-height: $line-height;
+}
+
+@function spacing($ps-value) {
+    @return ( $ps-value / 1000) * 1vw;
+}
+
+// vw 단위변환
+@function toFixed-second($num) {
+    $calc-num: if($num > 0, ceil($num * 1000), floor($num * 1000));
+    $result: $calc-num /1000;
+    @return $result;
+}
+@function vw($unit-px){
+    $changed-unit: ( $unit-px * 100) / 720;
+    $changed-vw: toFixed-second($changed-unit) + vw;
+    @return $changed-vw;
+}
+
+//
+@mixin appearance{
+    -webkit-appearance: none;
+//       -moz-appearance: none;
+//         -o-appearance: none;
+            appearance: none;
+}
+
+@mixin wrapper{
+    min-height: 100%;
+}
+
+// Hidden Contents
+@mixin hide{
+    position:absolute;
+    width:.1rem;
+    height:.1rem;
+    margin:-.1rem;
+    overflow:hidden;
+    clip-path:polygon(0 0, 0 0, 0 0);
+    // opacity: 0;
+}
+
+// Style
+@mixin rounded($radius){
+    border-radius: $radius;
+}
+
+@mixin shadow($x, $y, $blur, $spread, $color){
+    box-shadow: $x $y $blur $spread $color;
+}
+
+@mixin transition($property, $duration, $effect, $delay){
+    transition: $property $duration $effect $delay;
+}
+
+@mixin transform($property){
+    transform: $property;
+}
+
+@mixin bg($bg-name, $position, $size){
+    background:url('/assets/images/' + $bg-name) $position / $size no-repeat;
+}
+// @mixin bg-secon($bg-name){
+//     background-image:url('/assets/images/' + $bg-name);
+// }
+
+// Background Image Sprite
+@mixin bg-sprite($bg-name) {
+    $url: url(/assets/images/ic-icons.png);
+    $sprite: map-get($bg-sprite-list, $bg-name);
+  
+    width: map-get($sprite, 'width');
+    height: map-get($sprite, 'height');
+    background-image: $url;
+    background-position: map-get($sprite, 'bg-position');
+}
+
+$bg-sprite-list: (
+    arrow-first: (bg-position: -11rem -7.9rem, width: 1.4rem, height: 1.4rem),
+    arrow-prev: (bg-position: -11rem -9.3rem, width: 1.4rem, height: 1.4rem),
+    arrow-next: (bg-position: -11rem -9.3rem, width: 1.4rem, height: 1.4rem),
+    arrow-last: (bg-position: -11rem -7.9rem, width: 1.4rem, height: 1.4rem)
+);
+
+// Forms
+@mixin placeholder {
+    &::-webkit-input-placeholder {
+        @content;
+    }
+    &::-moz-placeholder {
+        @content;
+    }
+    &:-ms-input-placeholder {
+        @content;
+    }
+    &:-moz-placeholder {
+        @content;
+    }
+    &::placeholder {
+        @content;
+    }
+}
+
+// Scroll bar
+@mixin scrollbar{
+    scrollbar-width: thin;
+
+    &::-webkit-scrollbar {
+        width: .8rem;
+        height: .8rem;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #c8c8ce;
+        border-radius: .6rem;
+        background-clip: padding-box;
+        border: .1rem solid transparent;
+    }
+    &::-webkit-scrollbar-track {
+        background-color: #eff3f7;
+        border-radius: .6rem;
+        border: .1rem solid transparent;
+    }
+}
+
+@mixin flex($mode, $justify-content: null, $align-items: null, $flex-flow: null, $align-content: null){
+    display: $mode;
+    justify-content: $justify-content;
+    align-items: $align-items;
+    flex-flow: $flex-flow;
+    align-content: $align-content;
+}
+
+@mixin position($position, $top: null, $right: null, $bottom: null, $left: null, $z-index: null) {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+    z-index: $z-index;
+}
